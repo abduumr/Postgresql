@@ -17,11 +17,11 @@ https://www.postgresql.org/download/linux/redhat/
             Kernel: Linux 5.15.0-101.103.2.1.el8uek.x86_64
       Architecture: x86-64
 [root@node01 ~]#
-![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/15.jpg?raw=true)
 
 
 
 ```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/15.jpg?raw=true)
 
 ```
 [root@node01 ~]# lsblk
