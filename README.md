@@ -166,6 +166,65 @@ sr0                          11:0    1  11.6G  0 rom
 ![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/12.png?raw=true)
 
 ```
+# Install the repository RPM:
+[root@node01 ~]# sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/13.png?raw=true)
+
+```
+# Disable the built-in PostgreSQL module:
+[root@node01 ~]# sudo dnf -qy module disable postgresql
+```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/14.png?raw=true)
+
+```
+# Install PostgreSQL:
+[root@node01 ~]# sudo dnf install -y postgresql16-server
+```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/15.png?raw=true)
+
+```
+# Create New Location
+[root@node01 ~]# mkdir -p /database/pgdata/data
+[root@node01 ~]# chown -R postgres:postgres /database
+[root@node01 ~]# chmod -R 700 /database/pgdata
+```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/16.png?raw=true)
+
+```
+# Edit the Postgres Systemd service (ALL)
+[root@node01 ~]# vi  /lib/systemd/system/postgresql-16.service
+Environment=PGDATA=/database/pgdata/data/
+```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/17.png?raw=true)
+
+```
+[root@node01 ~]# systemctl daemon-reload
+```
+```
+[root@node01 ~]# cd /database/pgdata/data/
+[root@node01 data]# /usr/pgsql-16/bin/postgresql-16-setup initdb
+```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/18.png?raw=true)
+```
+[root@node01 data]# systemctl enable --now postgresql-16
+[root@node01 data]# systemctl start postgresql-16.service
+[root@node01 data]# systemctl status postgresql-16.service
+```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/19.png?raw=true)
+```
+isi
+```
+```
+isi
+```
+```
+isi
+```
+```
+isi
+```
+```
 isi
 ```
 ```
