@@ -213,8 +213,14 @@ Environment=PGDATA=/database/pgdata/data/
 ```
 ![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/19.png?raw=true)
 ```
-isi
+[root@node01 data]# ls -lah
+[root@node01 data]# su - postgres
+[postgres@node01 ~]$ psql
+postgres=# \l
 ```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/20.png?raw=true)
+
+# Create Replica Streaming
 ```
 isi
 ```
