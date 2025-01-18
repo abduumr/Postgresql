@@ -18,7 +18,7 @@ https://www.postgresql.org/download/linux/redhat/
       Architecture: x86-64
 [root@node01 ~]#
 ![alt text](https://github.com/abduumr/Postgresql/blob/main/postgres/2.png?raw=true)
-https://github.com/abduumr/Postgresql/blob/main/postgres/2.png?raw=true
+
 
 
 ```
