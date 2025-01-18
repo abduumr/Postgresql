@@ -17,10 +17,9 @@ https://www.postgresql.org/download/linux/redhat/
             Kernel: Linux 5.15.0-101.103.2.1.el8uek.x86_64
       Architecture: x86-64
 [root@node01 ~]#
-
-
-
 ```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/1.png?raw=true)
+
 ```
 [root@node01 ~]# lsblk
 NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
@@ -145,7 +144,7 @@ Writing superblocks and filesystem accounting information: done
 
 ```
 [root@node01 ~]# vi /etc/fstab
-
+/dev/database_vg/database_lv /database  ext4 defaults 0 0
 ```
 ![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/11.png?raw=true)
 
