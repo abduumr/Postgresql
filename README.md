@@ -99,25 +99,25 @@ The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
-![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/5.png?raw=true)
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/6.png?raw=true)
 
 ```
 [root@node01 ~]# pvcreate /dev/sdb1
   Physical volume "/dev/sdb1" successfully created.
 ```
-![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/6.png?raw=true)
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/7.png?raw=true)
 
 ```
 [root@node01 ~]# vgcreate database_vg /dev/sdb1
   Volume group "database_vg" successfully created
 ```
-![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/7.png?raw=true)
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/8.png?raw=true)
 
 ```
 [root@node01 ~]# lvcreate -l 100%FREE -n database_lv database_vg
   Logical volume "database_lv" created.
 ```
-![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/8.png?raw=true)
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/9.png?raw=true)
 
 ```
 [root@node01 ~]# mkfs.ext4 /dev/database_vg/database_lv
@@ -135,19 +135,19 @@ Writing inode tables: done
 Creating journal (65536 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
-![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/9.png?raw=true)
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/10.png?raw=true)
 
 ```
 [root@node01 ~]# mkdir /database/
 [root@node01 ~]# mount /dev/database_vg/database_lv /database
 ```
-![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/10.png?raw=true)
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/11.png?raw=true)
 
 ```
 [root@node01 ~]# vi /etc/fstab
 
 ```
-![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/11.png?raw=true)
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/12.png?raw=true)
 
 ```
 [root@node01 ~]# lsblk
@@ -164,7 +164,7 @@ sdb                           8:16   0    50G  0 disk
   └─database_vg-database_lv 252:3    0    50G  0 lvm  /database
 sr0                          11:0    1  11.6G  0 rom
 ```
-![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/12.png?raw=true)
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/13.png?raw=true)
 
 ```
 isi
