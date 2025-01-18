@@ -418,20 +418,83 @@ Environment=PGDATA=/database/pgdata/data/
 ```
 [root@node02 ~]# systemctl daemon-reload
 ```
+
+```
+Setting replica Primary - Standby
+IP primary / node01  = 192.168.242.8/24
+IP standby / node02 = 192.168.242.9/24
 ```
 ```
+[postgres@node01 ~]$ psql
+psql (16.6)
+Type "help" for help.
+
+postgres=# CREATE USER replicator WITH REPLICATION ENCRYPTED PASSWORD 'password';
+CREATE ROLE
+postgres=# CREATE DATABASE replication;
+CREATE DATABASE
+postgres=#
+```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/38.png?raw=true)
+
+```
+[postgres@node01 ~]$ vi /database/pgdata/data/postgresql.conf
+
+listen_addresses = '*'
+```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/39.png?raw=true)
+
+```
+[postgres@node01 ~]$ vi /database/pgdata/data/pg_hba.conf
+
+```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/40.png?raw=true)
+
+```
+[root@node01 data]# systemctl restart postgresql-16
+[root@node01 data]# systemctl status postgresql-16
+
+```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/41.png?raw=true)
+
+```
+[postgres@node02 ~]$ pg_basebackup -h 192.168.242.8 -D /database/pgdata/data/ -U replicator -P -v -R -X stream -C -S slaveslot1
+```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/42.png?raw=true)
+
+```
+[root@node02 ~]# systemctl start postgresql-16
+[root@node02 ~]# systemctl status postgresql-16
+```
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/43.png?raw=true)
+
+```
+[root@node01 data]# su - postgres
+Last login: Sat Jan 18 14:51:43 WIB 2025 on pts/0
+[postgres@node01 ~]$ psql
+psql (16.6)
+Type "help" for help.
+
+postgres=# SELECT slot_name, slot_type, active, restart_lsn FROM pg_replication_slots;
+ slot_name  | slot_type | active | restart_lsn
+------------+-----------+--------+-------------
+ slaveslot1 | physical  | t      | 0/3000060
+(1 row)
+
+postgres=#
+
+``````
+![image alt](https://github.com/abduumr/Postgresql/blob/main/postgres/44.png?raw=true)
+
+```
+```
+isi
+``````
 isi
 ```
 ```
 isi
-```
-```
-isi
-```
-```
-isi
-```
-```
+``````
 isi
 ```
 ```
